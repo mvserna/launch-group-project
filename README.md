@@ -15,3 +15,4 @@ If you prefer, **you can rename your project with the `mv` command.**
 
 Starting from the directory above your app (likely challenges):
 mv <source_directory> <target_directory>
+
