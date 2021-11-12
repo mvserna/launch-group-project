@@ -1,7 +1,6 @@
 import React from 'react'
 
 const CoffeeshopTile = (props) => {
-
     return(
         <div className="coffeeshop-tile">
             <h1>{ props.name }</h1>

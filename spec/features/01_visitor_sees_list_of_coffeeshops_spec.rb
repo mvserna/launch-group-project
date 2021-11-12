@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-
-
 RSpec.describe Api::V1::CoffeeshopsController, type: :controller do
     let!(:starbucks) { Coffeeshop.create!(
         name: "Starbucks", 
