@@ -1,7 +1,5 @@
 class HomesController < ApplicationController
-  # feel free to replace this controller
-
-  def index
-  end
-  
+    def index
+        redirect_to coffeeshops_path
+    end
 end
