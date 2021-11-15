@@ -39,17 +39,5 @@ RSpec.describe Api::V1::CoffeeshopsController, type: :controller do
             expect(returned_json[1]["zip"]).to eq "02108"
         end
     end
-
-    describe "GET#show" do 
-        it "should show an individual coffeeshop with all of its information" do 
-
-            get :show, params: {id: starbucks.id}
-            returned_json = JSON.parse(response.body)
-
-            expect(response.status).to eq 200
-
-            
-        end
-    end
 end
 
