@@ -11,9 +11,18 @@ const CoffeeshopsShowContainer = (props) => {
   })
 
   const fetchCoffeeshop = async () => {
-    const response = await fetch(`/api/v1/coffeeshops/${props.match.params.id}`)
-    const body = await response.json()
-    setCoffeeshop(body)
+    try {
+      const response = await fetch(`/api/v1/coffeeshops/${props.match.params.id}`)
+      if(!response.ok) {
+        const errorMessage = `${response.status}: ${response.statusText}`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const body = await response.json()
+      setCoffeeshop(body)
+    } catch (err) {
+      console.error(`Error in fetch: ${err.message}`)
+    }
   }
 
   useEffect( () => {

@@ -18,7 +18,7 @@ const CoffeeshopsPage = () => {
             setCoffeeShops(coffeeShopList)
 
         } catch(err) {
-            console.error(`Error in fecth: ${err.message}`)
+            console.error(`Error in fetch: ${err.message}`)
         }
     }
 
