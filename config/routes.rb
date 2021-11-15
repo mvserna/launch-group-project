@@ -9,7 +9,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+<<<<<<< Updated upstream
       resources :coffeeshops, only: [:index]
+=======
+      resources :coffeeshops, only: [:index, :show] do
+        resources :reviews, only: [:index]
+      end
+>>>>>>> Stashed changes
     end
   end
 
