@@ -40,3 +40,4 @@ RSpec.describe Api::V1::CoffeeshopsController, type: :controller do
         end
     end
 end
+
