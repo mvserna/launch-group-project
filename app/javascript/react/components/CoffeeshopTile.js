@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
-import CoffeeshopsShowContainer from './CoffeeshopsShowContainer'
+import { Link } from 'react-router-dom'
 
 const CoffeeshopTile = (props) => {
     return(
@@ -11,10 +10,7 @@ const CoffeeshopTile = (props) => {
                 </Link>
             </h1>
             <p>{ props.address }</p>
-            <p>{ props.city }, {props.state} { props.zip }</p>
-            <Switch>
-                <Route exact path="/coffeeshops/:id" component={CoffeeshopsShowContainer} />
-            </Switch>
+            <p>{ props.city }, {props.state} { props.zip }</p>  
         </div>
     )
 }
