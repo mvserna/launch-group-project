@@ -5,8 +5,6 @@ class ReviewSerializer < ActiveModel::Serializer
     self.object.user.first_name
   end
 
-  
-
   def upvotes
     if self.object.votes.empty?
       0
@@ -24,8 +22,8 @@ class ReviewSerializer < ActiveModel::Serializer
   end
 
   def user_already_voted
-    previous_vote = Vote.find_by(review: self.object, user: current_user)
-    if previous_vote.upvotes == 1 || previous_vote.downvotes == 1
+    previous_vote = Vote.find_by(review_id: self.object, user: current_user)
+    if previous_vote && (previous_vote.upvotes == 1 || previous_vote.downvotes == 1)
       true
     else
       false
