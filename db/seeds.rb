@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-<<<<<<< Updated upstream
-=======
 
 starbucks = Coffeeshop.create!(
   name: "Starbucks", 
@@ -41,6 +39,15 @@ review.coffeeshop = dunkins
 review.user = User.first
 review.save!
 
+vote = Vote.new(
+  user: User.first,
+  review: Review.first,
+  upvotes: 1,
+  downvotes: 0
+)
+
+vote.save!
+
 another_review = Review.new(
   body: "This is a test review of a coffeeshop. I like Starbucks said John Cena.",
   rating: 4
@@ -49,4 +56,3 @@ another_review = Review.new(
 another_review.coffeeshop = starbucks
 another_review.user = User.first
 another_review.save!
->>>>>>> Stashed changes

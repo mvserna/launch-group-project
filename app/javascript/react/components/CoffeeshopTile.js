@@ -1,11 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CoffeeshopTile = (props) => {
     return(
         <div className="coffeeshop-tile">
-            <h1>{ props.name }</h1>
+            <h1>
+                <Link to={`/coffeeshops/${props.id}`}>
+                    {props.name}
+                </Link>
+            </h1>
             <p>{ props.address }</p>
-            <p>{ props.city }, {props.state} { props.zip }</p>
+            <p>{ props.city }, {props.state} { props.zip }</p>  
         </div>
     )
 }

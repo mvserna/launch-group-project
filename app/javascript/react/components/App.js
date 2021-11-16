@@ -1,12 +1,16 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import CoffeeshopsPage from './CoffeeshopsPage'
+import CoffeeshopsShowContainer from './CoffeeshopsShowContainer'
 
 export const App = (props) => {
   return (
     <div>
       <BrowserRouter>
-        <Route path="/coffeeshops" component={CoffeeshopsPage} />
+        <Switch>
+          <Route exact path="/coffeeshops" component={CoffeeshopsPage} />
+          <Route exact path="/coffeeshops/:id" component={CoffeeshopsShowContainer} />
+        </Switch>
       </BrowserRouter>
     </div>
   )

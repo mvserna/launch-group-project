@@ -5,17 +5,14 @@ Rails.application.routes.draw do
 
   root "homes#index"
 
-  resources :coffeeshops, only: [:index]
+  resources :coffeeshops, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do
-<<<<<<< Updated upstream
-      resources :coffeeshops, only: [:index]
-=======
       resources :coffeeshops, only: [:index, :show] do
         resources :reviews, only: [:index]
       end
->>>>>>> Stashed changes
+      resources :votes, only: [:create]
     end
   end
 
