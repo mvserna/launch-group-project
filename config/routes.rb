@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   root "homes#index"
 
-  resources :coffeeshops, only: [:index, :show]
+  resources :coffeeshops, only: [:index, :show, :create, :new]
 
   namespace :api do
     namespace :v1 do
-      resources :coffeeshops, only: [:index, :show]
+      resources :coffeeshops, only: [:index, :show, :create, :new]
     end
   end
 
