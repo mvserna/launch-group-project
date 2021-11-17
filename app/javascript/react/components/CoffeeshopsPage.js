@@ -15,7 +15,7 @@ const CoffeeshopsPage = () => {
             }
 
             const coffeeShopList = await response.json()
-            setCoffeeShops(coffeeShopList)
+            setCoffeeShops(coffeeShopList.coffeeshops)
 
         } catch(err) {
             console.error(`Error in fetch: ${err.message}`)
