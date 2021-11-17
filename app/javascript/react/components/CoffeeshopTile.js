@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const CoffeeshopTile = (props) => {
     return(
-        <div className="coffeeshop-tile">
+        <div className="index tile">
             <h1>
                 <Link to={`/coffeeshops/${props.id}`}>
                     {props.name}

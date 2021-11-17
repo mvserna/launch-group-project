@@ -41,8 +41,13 @@ const CoffeeshopsPage = () => {
     })
 
     return(
-        <div className="coffeeshops-list">
-            {coffeeShopArray}
+        <div className="index container">
+            <div className="index title">
+                Cool Beans
+            </div>
+            <div className="index list">
+                {coffeeShopArray}
+            </div>
         </div>
     )
 }
