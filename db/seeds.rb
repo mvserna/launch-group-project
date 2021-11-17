@@ -21,3 +21,35 @@ Coffeeshop.create!(
   state: "MA", 
   zip: "02108"
 )
+
+Coffeeshop.create!(
+  name: "Good Bean", 
+  address: "123 Love St", 
+  city: "Boston", 
+  state: "MA", 
+  zip: "02108"
+)
+
+Coffeeshop.create!(
+  name: "Bad Bean", 
+  address: "123 Hate St", 
+  city: "Boston", 
+  state: "MA", 
+  zip: "02108"
+)
+
+Coffeeshop.create!(
+  name: "Mediocre Bean", 
+  address: "123 Kinda St", 
+  city: "Boston", 
+  state: "MA", 
+  zip: "02108"
+)
+
+Coffeeshop.create!(
+  name: "Just Bean", 
+  address: "123 Road St", 
+  city: "Boston", 
+  state: "MA", 
+  zip: "02108"
+)

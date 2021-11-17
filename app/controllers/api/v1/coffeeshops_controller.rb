@@ -9,19 +9,14 @@ class Api::V1::CoffeeshopsController < ApplicationController
         render json: Coffeeshop.find(params[:id])
     end
 
-    def new
-        @coffeeshop = Coffeeshop.new
-    end
-
     def create
-        @coffeeshop = Coffeeshop.new(coffeeshop_params)
+        coffeeshop = Coffeeshop.new(coffeeshop_params)
 
-        if @coffeeshop.save
-            flash[:notice] = "Coffee Shop has been added successfully"
-            redirect_to root_path
+        if coffeeshop.save
+            render json: coffeeshop
         else
-            flash.now[:error] = @coffeeshop.errors.full_messages.to_sentence
-            render new_coffeeshop_path
+
+            render json: { error: coffeeshop.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
