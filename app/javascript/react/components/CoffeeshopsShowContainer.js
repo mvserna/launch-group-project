@@ -8,10 +8,9 @@ const CoffeeshopsShowContainer = (props) => {
     city: "",
     state: "",
     zip: "",
-    description: ""
+    description: "",
+    reviews: []
   })
-
-  const [reviews, setReviews] = useState([])
 
   const fetchCoffeeshop = async () => {
     try {
@@ -22,22 +21,7 @@ const CoffeeshopsShowContainer = (props) => {
         throw(error)
       }
       const body = await response.json()
-      setCoffeeshop(body)
-    } catch (err) {
-      console.error(`Error in fetch: ${err.message}`)
-    }
-  }
-
-  const fetchCoffeeshopReviews = async () => {
-    try {
-      const response = await fetch(`/api/v1/coffeeshops/${props.match.params.id}/reviews`)
-      if(!response.ok) {
-        const errorMessage = `${response.status}: ${response.statusText}`
-        const error = new Error(errorMessage)
-        throw(error)
-      }
-      const body = await response.json()
-      setReviews(body.reviews)
+      setCoffeeshop(body.coffeeshop)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
@@ -45,15 +29,17 @@ const CoffeeshopsShowContainer = (props) => {
 
   useEffect( () => {
     fetchCoffeeshop()
-    fetchCoffeeshopReviews()
   }, [])
 
-  const reviewsComponents = !reviews ? [] : reviews.map( (review) => {
-    return (
-      <ReviewTile key={review.id} review={review} />
-    )
-  })
+  let reviewsComponents
 
+  if (coffeeshop.reviews !== []) {
+    reviewsComponents = coffeeshop.reviews.map( (review) => {
+      return (
+        <ReviewTile key={review.id} review={review} />
+      )
+    })
+  }
 
   return (
     <div>

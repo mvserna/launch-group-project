@@ -42,7 +42,7 @@ review.save!
 vote = Vote.new(
   user: User.first,
   review: Review.first,
-  upvotes: 1,
+  upvotes: 0,
   downvotes: 0
 )
 

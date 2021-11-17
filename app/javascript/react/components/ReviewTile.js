@@ -1,41 +1,54 @@
 import React, { useState } from "react"
 
 const ReviewTile = (props) => {
-  const { id, body, rating, name, upvotes, downvotes, user_already_voted } = props.review
+  const { id, body, rating, name, upvotes, downvotes, user_already_upvoted, user_already_downvoted } = props.review
   
   const [votes, setVotes] = useState({
     upvotes: upvotes,
     downvotes: downvotes,
   })
-  const [pastVote, setPastVote] = useState(user_already_voted)
+  const [pastVote, setPastVote] = useState({
+    upvoted: user_already_upvoted,
+    downvoted: user_already_downvoted
+  })
 
-  const upVoteHandler = async () => {
-    let postPayload = {
-      review_id: id,
-      upvotes: 1,
-      downvotes: 0
-    }
-
-    if (votes.upvotes == 1) {
-      postPayload.upvotes = 0
-    }
-    setPastVote(!pastVote)
-
-    await updateVotes(postPayload)
-  }
-
-  const downVoteHandler = async () => {
+  const voteHandler = async (event) => {
+    const current_vote = event.currentTarget.innerText.slice(0,1)
+    let new_upvotes_total
+    let new_downvotes_total
     let postPayload = {
       review_id: id,
       upvotes: 0,
-      downvotes: 1
+      downvotes: 0
     }
-
-    if (votes.downvotes == 1) {
-      postPayload.downvotes = 0
+    
+    if (pastVote.upvoted && current_vote === "U") {
+      new_upvotes_total = votes.upvotes - 1
+      setPastVote({...pastVote, upvoted: false})
+    } else if (pastVote.upvoted && current_vote === "D") {
+      new_upvotes_total = votes.upvotes - 1
+      new_downvotes_total = votes.downvotes + 1
+      setPastVote({upvoted: false, downvoted: true})
+      postPayload.downvotes = 1
+    } else if (pastVote.downvoted && current_vote === "U") {
+      new_upvotes_total = votes.upvotes + 1
+      new_downvotes_total = votes.downvotes - 1
+      setPastVote({upvoted: true, downvoted: false})
+      postPayload.upvotes = 1
+    } else if (pastVote.downvoted && current_vote === "D") {
+      new_downvotes_total = votes.downvotes - 1
+      setPastVote({...pastVote, downvoted: false})
+    } else if (current_vote === "U") {
+      new_upvotes_total = votes.upvotes + 1
+      setPastVote({upvoted: true, downvoted: false})
+      postPayload.upvotes = 1
+    } else if (current_vote === "D") {
+      new_downvotes_total = votes.downvotes + 1
+      setPastVote({upvoted: false, downvoted: true})
+      postPayload.downvotes = 1
     }
-    setPastVote(!pastVote)
-
+    
+    setVotes({upvotes: new_upvotes_total, downvotes: new_downvotes_total})
     await updateVotes(postPayload)
   }
 
@@ -71,10 +84,10 @@ const ReviewTile = (props) => {
       <div>
         Rating: {rating}/5
       </div>
-      <div onClick={upVoteHandler}>
+      <div onClick={voteHandler}>
         Upvotes: {votes.upvotes}        
       </div>
-      <div onClick={downVoteHandler}>
+      <div onClick={voteHandler}>
         Downvotes: {votes.downvotes}
       </div>
     </div>
