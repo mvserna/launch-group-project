@@ -43,7 +43,9 @@ const CoffeeshopsPage = () => {
   return(
     <div className="index container">
       <div className="index title">
-        Cool Beans
+        <h2 className="index header">
+          Behold the coffee shop of your dreams!
+        </h2>
       </div>
       <div className="index list">
         {coffeeShopArray}
