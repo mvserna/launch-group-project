@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   # root "homes#index"
 
   root "coffeeshops#index"
-  get "/coffeeshops/new", to: "coffeeshops#new"
+  
+  resources :coffeeshops, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do
-      resources :coffeeshops, only: [:index, :show, :create, :new] do
+      resources :coffeeshops, only: [:index, :show] do
         resources :reviews, only: [:index]
+      end
+      resources :votes, only: [:create]
     end
-    resources :votes, only: [:create]
   end
 
 end
