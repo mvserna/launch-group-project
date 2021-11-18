@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root "homes#index"
 
-  root "homes#index"
-
-  resources :coffeeshops, only: [:index, :show, :create, :new]
+  root "coffeeshops#index"
+  get "/coffeeshops/new", to: "coffeeshops#new"
 
   namespace :api do
     namespace :v1 do
-      resources :coffeeshops, only: [:index, :show, :create]
+      resources :coffeeshops, only: [:index, :show, :create, :new] do
+        resources :reviews, only: [:index]
     end
+    resources :votes, only: [:create]
   end
 
 end

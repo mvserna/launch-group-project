@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Coffeeshop.create!(
+starbucks = Coffeeshop.create!(
   name: "Starbucks", 
   address: "12 Winter Pl", 
   city: "Boston", 
@@ -14,7 +14,7 @@ Coffeeshop.create!(
   zip: "02108"
 )
 
-Coffeeshop.create!(
+dunkins = Coffeeshop.create!(
   name: "Dunkins", 
   address: "100 Summer St", 
   city: "Boston", 
@@ -22,34 +22,37 @@ Coffeeshop.create!(
   zip: "02108"
 )
 
-Coffeeshop.create!(
-  name: "Good Bean", 
-  address: "123 Love St", 
-  city: "Boston", 
-  state: "MA", 
-  zip: "02108"
+cena = User.create!(
+  email: "test@test.com",
+  encrypted_password: "thequickbrownfox",
+  first_name: "John",
+  last_name: "Cena",
+  password: "thequickbrownfox"
 )
 
-Coffeeshop.create!(
-  name: "Bad Bean", 
-  address: "123 Hate St", 
-  city: "Boston", 
-  state: "MA", 
-  zip: "02108"
+review = Review.new(
+  body: "This is a test review of a coffeeshop. I love Dunkin Donuts said John Cena.",
+  rating: 5
 )
 
-Coffeeshop.create!(
-  name: "Mediocre Bean", 
-  address: "123 Kinda St", 
-  city: "Boston", 
-  state: "MA", 
-  zip: "02108"
+review.coffeeshop = dunkins
+review.user = User.first
+review.save!
+
+vote = Vote.new(
+  user: User.first,
+  review: Review.first,
+  upvotes: 0,
+  downvotes: 0
 )
 
-Coffeeshop.create!(
-  name: "Just Bean", 
-  address: "123 Road St", 
-  city: "Boston", 
-  state: "MA", 
-  zip: "02108"
+vote.save!
+
+another_review = Review.new(
+  body: "This is a test review of a coffeeshop. I like Starbucks said John Cena.",
+  rating: 4
 )
+
+another_review.coffeeshop = starbucks
+another_review.user = User.first
+another_review.save!

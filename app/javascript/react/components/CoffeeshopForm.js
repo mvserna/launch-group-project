@@ -84,15 +84,6 @@ const CoffeeshopForm = (props) => {
       const parseShopData = await response.json()
       setCoffeeFormData({...coffeeFormData, parseShopData})
       setRedirect(true)
-
-      setCoffeeFormData({
-        name: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        description: ""
-      })
       
     } catch(err) {
       console.error(err)
@@ -131,22 +122,56 @@ const CoffeeshopForm = (props) => {
           />
         </label>
 
-        <label>Address:</label>
-        <input name="address" id="address" type="text" value={coffeeFormData.address} onChange={handleChange}/>
+        <label>Address:
+          <input 
+            name="address" 
+            id="address" 
+            type="text" 
+            value={coffeeFormData.address} 
+            onChange={handleChange}
+          />
+        </label>
 
-        <label>City:</label>
-        <input name="city" id="city" type="text" value={coffeeFormData.city} onChange={handleChange}/>
+        <label>City:
+          <input 
+            name="city" 
+            id="city" 
+            type="text" 
+            value={coffeeFormData.city} 
+            onChange={handleChange}
+          />
+        </label>
 
-        <label>State:</label>
-        <input name="state" id="state" type="text" value={coffeeFormData.state} onChange={handleChange}/>
+        <label>State:        
+          <input 
+            name="state"
+            id="state" 
+            type="text" 
+            value={coffeeFormData.state} 
+            onChange={handleChange}/>
+        </label>
 
-        <label>Zip:</label>
-        <input name="zip" id="zip" type="text" value={coffeeFormData.zip}onChange={handleChange}/>
+        <label>Zip:
+          <input 
+            name="zip" 
+            id="zip" 
+            type="text" 
+            value={coffeeFormData.zip}
+            onChange={handleChange}
+          />
+        </label>
 
-        <label>Description:</label>
-        <input name="description" id="description" type="text" value={coffeeFormData.description}onChange={handleChange}/>
+        <label>Description:
+          <input 
+            name="description" 
+            id="description" 
+            type="text" 
+            value={coffeeFormData.description}
+            onChange={handleChange}
+          />
+        </label>
 
-        <input name="submit" type="submit" value="Add Shop"/>
+        <input className ="button" name="submit" type="submit" value="Add Shop"/>
         <button className ="button" onClick={clearForm}>Clear</button>
       </form>
     </div>
