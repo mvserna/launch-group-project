@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :coffeeshops, only: [:index, :show, :create] do
         resources :reviews, only: [:index]
-    end
+      end
       resources :votes, only: [:create]
     end
   end
