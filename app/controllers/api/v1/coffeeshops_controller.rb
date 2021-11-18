@@ -14,7 +14,6 @@ class Api::V1::CoffeeshopsController < ApplicationController
     if coffeeshop.save
         render json: coffeeshop
     else
-
         render json: { error: coffeeshop.errors.full_messages }, status: :unprocessable_entity
     end
   end

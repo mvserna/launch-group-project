@@ -23,7 +23,7 @@ RSpec.describe Api::V1::CoffeeshopsController, type: :controller do
 
     it "returns the new coffeeshop as json" do
       post(:create, params: post_json, format: :json)
-      returned_json = JSON.parse(response.body)
+      returned_json = JSON.parse(response.body)["coffeeshop"]
 
       expect(response.content_type).to eq("application/json; charset=utf-8")
       expect(returned_json).to be_kind_of(Hash)
