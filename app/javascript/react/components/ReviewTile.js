@@ -74,23 +74,28 @@ const ReviewTile = (props) => {
   }
   
   return (
-  <div>
-    <div>
-    {body}
+    <div className="grid-x grid-margin-x">
+      <div className="cell small-2" >
+        <div>
+          Posted by {name}
+        </div>
+        <br />
+        <div>
+          Rating: {rating}/5
+        </div>
+      </div>
+      <div className="cell small-8">
+        <p>{body}</p>
+      </div>
+      <div className="cell small-2" >
+        <div onClick={voteHandler}>
+          Upvotes: {votes.upvotes}    
+        </div>
+        <div onClick={voteHandler}>
+          Downvotes: {votes.downvotes}
+        </div>
+      </div>
     </div>
-    <div>
-    Posted by {name}
-    </div>
-    <div>
-    Rating: {rating}/5
-    </div>
-    <div onClick={voteHandler}>
-    Upvotes: {votes.upvotes}    
-    </div>
-    <div onClick={voteHandler}>
-    Downvotes: {votes.downvotes}
-    </div>
-  </div>
   )
 }
 

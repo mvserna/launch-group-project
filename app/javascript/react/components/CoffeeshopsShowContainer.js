@@ -42,22 +42,26 @@ const CoffeeshopsShowContainer = (props) => {
   }
 
   return (
-  <div>
+  <div className="container">
     <div className="show-title">
-    <h3>{coffeeshop.name}</h3>
+      <h3>{coffeeshop.name}</h3>
     </div>
     <div className="show-address">
-    <div>
-      {coffeeshop.address}
-    </div>
-    {`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}
+      <div>
+        {coffeeshop.address}
+      </div>
+      <div>
+        {`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}
+      </div>
     </div>
     <div className="show-description">
-    Description: {coffeeshop.description}
+      {coffeeshop.description}
     </div>
-    <div>
-    <h4>Reviews</h4>
-    {reviewsComponents}
+    <div >
+      <h5>Reviews</h5>
+      <div className="show tile grid-container">
+        {reviewsComponents}
+      </div>
     </div>
   </div>
   )

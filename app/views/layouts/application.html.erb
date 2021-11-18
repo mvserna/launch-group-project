@@ -10,33 +10,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 </head>
 <body>
-
-<div class="top-bar coffee-navbar">
-  <div class="top-bar-left">
-  <ul class="menu">
-    <li class="menu-text"><%= link_to 'Coffee Shop Index', root_path %></li>
-  </ul>
-  <div class="top-bar-right">
-    <% if signed_in? %>
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-    </ul>
-    <% else %>
-    <ul class="menu">
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    </ul>
-    <% end %>
+  <div data-sticky-container>
+    <div class="top-bar coffee-navbar" data-sticky data-options="marginTop:0">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text button"><%= link_to 'Coffee Shop Index', root_path %></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <% if signed_in? %>
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="button"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        </ul>
+        <% else %>
+        <ul class="menu">
+          <li class="button"><%= link_to "Sign In", new_user_session_path %></li>
+          <li class="button"><%= link_to "Sign Up", new_user_registration_path %></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
-  
-
-  <%- flash.each do |key, value| -%>
-  <div class="flash flash-<%= key %>">
-    <%= value %>
-  </div>
-  <%- end -%>
 
   <%= yield %>
 
