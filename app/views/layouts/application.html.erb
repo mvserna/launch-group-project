@@ -8,32 +8,31 @@
 </head>
 <body>
 
-<img src="https://assets.bonappetit.com/photos/5c366551f212512d0e6cefd0/16:9/w_2560%2Cc_limit/Basically-Coffee-0219-03.jpg" alt="background coffeebeans" id="bg-img">
 <div class="top-bar">
   <div class="top-bar-left">
-    <ul class="menu">
-      <li class="menu-text"><%= link_to 'Coffee Shop Index', root_path %></li>
+  <ul class="menu">
+    <li class="menu-text"><%= link_to 'Coffee Shop Index', root_path %></li>
+  </ul>
+  <div class="top-bar-right">
+    <% if signed_in? %>
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
     </ul>
-    <div class="top-bar-right">
-      <% if signed_in? %>
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        </ul>
-      <% else %>
-        <ul class="menu">
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        </ul>
-      <% end %>
-    </div>
+    <% else %>
+    <ul class="menu">
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    </ul>
+    <% end %>
+  </div>
   </div>
 </div>
   
 
   <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
+  <div class="flash flash-<%= key %>">
+    <%= value %>
+  </div>
   <%- end -%>
 
   <%= yield %>
@@ -41,9 +40,9 @@
   <%= javascript_include_tag 'application' %>
   
   <%- if Rails.env.development? || Rails.env.test? -%> 
-    <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
-    <%- end -%>
+  <%= javascript_tag do %>
+    window.railsEnv = '<%= Rails.env %>'
+  <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
   

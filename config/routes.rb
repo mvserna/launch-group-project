@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   resources :coffeeshops, only: [:index, :show]
 
   namespace :api do
-    namespace :v1 do
-      resources :coffeeshops, only: [:index, :show] do
-        resources :reviews, only: [:index]
-      end
-      resources :votes, only: [:create]
+  namespace :v1 do
+    resources :coffeeshops, only: [:index, :show] do
+    resources :reviews, only: [:index]
     end
+    resources :votes, only: [:create]
+  end
   end
 
 end

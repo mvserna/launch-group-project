@@ -16,50 +16,50 @@ ActiveRecord::Schema.define(version: 2021_11_16_154806) do
   enable_extension "plpgsql"
 
   create_table "coffeeshops", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "state", null: false
-    t.string "zip", null: false
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  t.string "name", null: false
+  t.string "address", null: false
+  t.string "city", null: false
+  t.string "state", null: false
+  t.string "zip", null: false
+  t.text "description"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "coffeeshop_id", null: false
-    t.bigint "user_id", null: false
-    t.text "body", null: false
-    t.integer "rating", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["coffeeshop_id"], name: "index_reviews_on_coffeeshop_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+  t.bigint "coffeeshop_id", null: false
+  t.bigint "user_id", null: false
+  t.text "body", null: false
+  t.integer "rating", null: false
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["coffeeshop_id"], name: "index_reviews_on_coffeeshop_id"
+  t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  t.string "email", default: "", null: false
+  t.string "encrypted_password", default: "", null: false
+  t.string "first_name", default: "", null: false
+  t.string "last_name", default: "", null: false
+  t.string "reset_password_token"
+  t.datetime "reset_password_sent_at"
+  t.datetime "remember_created_at"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["email"], name: "index_users_on_email", unique: true
+  t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "votes", force: :cascade do |t|
-    t.bigint "review_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "upvotes", default: 0, null: false
-    t.integer "downvotes", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["review_id"], name: "index_votes_on_review_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
+  t.bigint "review_id", null: false
+  t.bigint "user_id", null: false
+  t.integer "upvotes", default: 0, null: false
+  t.integer "downvotes", default: 0, null: false
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["review_id"], name: "index_votes_on_review_id"
+  t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

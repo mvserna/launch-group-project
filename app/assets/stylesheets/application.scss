@@ -17,8 +17,8 @@
  */
 
 // .index.container {
-//    background-color: lightseagreen;
-//    padding: 5px;
+//  background-color: lightseagreen;
+//  padding: 5px;
 //  }
 // .index.title {
 //   background-color: lightblue;
@@ -27,7 +27,6 @@
 //   background-color: lightcoral;
 // }
 .index.tile {
-  background-color: #ecd7b8;
   width: 80%;
   margin-left: 20%;
   margin-top: 0;
@@ -41,6 +40,6 @@
   font-weight: normal;
 }
 
-#bg-img {
-  opacity: 0.4;
+body {
+  background-color: #ecd7b8;
 }
