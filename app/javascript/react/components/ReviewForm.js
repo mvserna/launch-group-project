@@ -63,12 +63,13 @@ if (redirect) {
 }
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Add a Review:</h1>
       <form onSubmit={handleSubmit}>
+        <fieldset className="fieldset">
         <ErrorList errors={errors} />
 
-        <label>Rating 0-5:
+        <label className="rating">Rating 0-5:
           <input 
             name="rating" 
             id="rating" 
@@ -80,13 +81,15 @@ if (redirect) {
         </label>
 
         <label>Comment:
-          <input 
+          <textarea
+            placeholder="Leave a review here" 
             name="body" 
             id="body" 
             type="text"
             onChange={handleChange} 
           />
         </label>
+        </fieldset>
 
         <input className ="button" name="submit" type="submit" value="Add Review"/>
       </form>

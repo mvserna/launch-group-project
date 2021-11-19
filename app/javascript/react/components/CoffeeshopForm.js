@@ -110,9 +110,10 @@ const CoffeeshopForm = (props) => {
   }
 
   return(
-    <div>
+    <div className="form-container">
       <h1>Add a New Coffee Shop</h1>
       <form onSubmit={handleSubmit}>
+        <fieldset className="fieldset">
         <ErrorList errors={errors} />
         <label>Name:
           <input 
@@ -172,9 +173,11 @@ const CoffeeshopForm = (props) => {
             onChange={handleChange}
           />
         </label>
-
-        <input className ="button" name="submit" type="submit" value="Add Shop"/>
-        <button className ="button" onClick={clearForm}>Clear</button>
+        </fieldset>
+        <div class="button-group">
+          <input className ="button" name="submit" type="submit" value="Add Shop"/>
+          <button className ="button" onClick={clearForm}>Clear</button>
+        </div>
       </form>
     </div>
   )
