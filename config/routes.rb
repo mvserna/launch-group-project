@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :coffeeshops, only: [:index, :show, :create] do
         resources :reviews, only: [:index]
       end
+      resources :reviews, only: [:create]
       resources :votes, only: [:create]
     end
   end

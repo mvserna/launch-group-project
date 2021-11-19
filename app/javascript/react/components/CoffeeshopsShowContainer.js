@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import ReviewTile from "./ReviewTile.js"
 
 const CoffeeshopsShowContainer = (props) => {
@@ -53,7 +54,10 @@ const CoffeeshopsShowContainer = (props) => {
       <div className="show-description">
         {coffeeshop.description}
       </div>
-      <div >
+      <Link to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
+          Leave a Review!
+      </Link>
+      <div>
         <h5>Reviews</h5>
         <div className="show tile grid-container">
           {reviewsComponents}

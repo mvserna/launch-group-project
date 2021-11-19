@@ -24,32 +24,32 @@ dunkins = Coffeeshop.create!(
 )
 
 Coffeeshop.create!(
-  name: "Good Bean", 
-  address: "123 Love St", 
+  name: "CuppaCoffee", 
+  address: "1 Merrimac", 
   city: "Boston", 
   state: "MA", 
   zip: "02108"
 )
 
 Coffeeshop.create!(
-  name: "Bad Bean", 
-  address: "123 Hate St", 
+  name: "George Howell Coffee", 
+  address: "100 Hanover St", 
   city: "Boston", 
   state: "MA", 
   zip: "02108"
 )
 
 Coffeeshop.create!(
-  name: "Mediocre Bean", 
-  address: "123 Kinda St", 
+  name: "Ogawa Coffee", 
+  address: "10 Milk St", 
   city: "Boston", 
   state: "MA", 
   zip: "02108"
 )
 
 Coffeeshop.create!(
-  name: "Just Bean", 
-  address: "123 Road St", 
+  name: "Recreo Coffee", 
+  address: "1 City Hall Square", 
   city: "Boston", 
   state: "MA", 
   zip: "02108"
@@ -64,7 +64,7 @@ cena = User.create!(
 )
 
 review = Review.new(
-  body: "This is a test review of a coffeeshop. I love Dunkin Donuts said John Cena.",
+  body: "Nothing like a cup of Dunkin Donuts.",
   rating: 5
 )
 
@@ -82,7 +82,7 @@ vote = Vote.new(
 vote.save!
 
 another_review = Review.new(
-  body: "This is a test review of a coffeeshop. I like Starbucks said John Cena.",
+  body: "Great shop but I wish it had later hours since it closes at 1pm.",
   rating: 4
 )
 
