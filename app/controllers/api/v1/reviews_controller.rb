@@ -4,10 +4,6 @@ class Api::V1::ReviewsController < ApplicationController
     render json: Review.all
   end
 
-  def show
-    render json: Review.find(params[:id])
-  end
-
   def create
     review = Review.new(
       user: current_user,
