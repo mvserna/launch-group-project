@@ -54,7 +54,7 @@ const CoffeeshopsShowContainer = (props) => {
       <div className="show-description">
         {coffeeshop.description}
       </div>
-      <Link to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
+      <Link className="button" to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
           Leave a Review!
       </Link>
       <div>
