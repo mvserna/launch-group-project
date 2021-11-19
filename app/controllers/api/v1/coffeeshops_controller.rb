@@ -1,5 +1,4 @@
 class Api::V1::CoffeeshopsController < ApplicationController
-
   def index
     render json: Coffeeshop.all
   end
@@ -22,4 +21,4 @@ class Api::V1::CoffeeshopsController < ApplicationController
   def coffeeshop_params 
     params.require(:coffeeshop).permit(:name, :address, :city, :state, :zip, :description)
   end
-end 
+end

@@ -37,31 +37,31 @@ const CoffeeshopsShowContainer = (props) => {
   if (coffeeshop.reviews !== []) {
     reviewsComponents = coffeeshop.reviews.map( (review) => {
       return (
-        <ReviewTile key={review.id} review={review} />
+      <ReviewTile key={review.id} review={review} />
       )
     })
   }
 
   return (
-    <div>
+    <div className="container">
       <div className="show-title">
         <h3>{coffeeshop.name}</h3>
       </div>
       <div className="show-address">
-        <div>
-          {coffeeshop.address}
-        </div>
-        {`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}
+        <div>{coffeeshop.address}</div>
+        <div>{`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}</div>
       </div>
       <div className="show-description">
-        Description: {coffeeshop.description}
+        {coffeeshop.description}
       </div>
-      <div>
-        <h4>Reviews</h4>
-        <Link to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
-            Leave a Review!
+      <Link to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
+          Leave a Review!
       </Link>
-      {reviewsComponents}
+      <div>
+        <h5>Reviews</h5>
+        <div className="show tile grid-container">
+          {reviewsComponents}
+        </div>
       </div>
     </div>
   )

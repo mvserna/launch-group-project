@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RailsStaffGroupProject</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div class="top-bar">
-  <div class="top-bar-left">
-    <ul class="menu">
-      <li class="menu-text"><%= link_to 'Coffee Shop Index', root_path %></li>
-      <li class="menu-text"><%= link_to 'Add a Coffee Shop', coffeeshops_new_path %></li>
-    </ul>
-    <div class="top-bar-right">
-      <% if signed_in? %>
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        </ul>
-      <% else %>
-        <ul class="menu">
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <head>
+    <title>Cool Beans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%= csrf_meta_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+  </head>
   
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+  <body>
+    <div data-sticky-container>
+      <div class="top-bar coffee-navbar" data-sticky data-options="marginTop:0">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="menu-text button"><%= link_to 'Home', root_path %></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <% if signed_in? %>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="button"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+          <% else %>
+          <ul class="menu button-group">
+            <li class="button"><%= link_to "Sign In", new_user_session_path %></li>
+            <li class="button"><%= link_to "Sign Up", new_user_registration_path %></li>
+          </ul>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <%- end -%>
 
-  <%= yield %>
+    <%= yield %>
 
-  <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
-    <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
+    <%= javascript_include_tag 'application' %>
+
+    <%- if Rails.env.development? || Rails.env.test? -%> 
+      <%= javascript_tag do %>
+        window.railsEnv = '<%= Rails.env %>'
+      <%- end -%>
     <%- end -%>
-  <%- end -%>
-  <%= javascript_pack_tag 'application' %>
-  
-  <%= yield :extra_footer %>
-</body>
+
+    <%= javascript_pack_tag 'application' %>
+
+    <%= yield :extra_footer %>
+  </body>
 </html>

@@ -6,6 +6,7 @@ class Api::V1::VotesController < ApplicationController
       upvotes: params["upvotes"],
       downvotes: params["downvotes"]
     )
+    
     previous_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
     if previous_vote
       previous_vote.upvotes = params["upvotes"]
