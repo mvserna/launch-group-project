@@ -21,7 +21,7 @@ const ReviewTile = (props) => {
       upvotes: 0,
       downvotes: 0
     }
-    
+
     if (pastVote.upvoted && current_vote === "U") {
       new_upvotes_total = votes.upvotes - 1
       setPastVote({...pastVote, upvoted: false})
@@ -47,7 +47,7 @@ const ReviewTile = (props) => {
       setPastVote({upvoted: false, downvoted: true})
       postPayload.downvotes = 1
     }
-    
+
     setVotes({upvotes: new_upvotes_total, downvotes: new_downvotes_total})
     await updateVotes(postPayload)
   }
@@ -69,26 +69,31 @@ const ReviewTile = (props) => {
       }
       setVotes(postPayload)
     } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`)
+        console.error(`Error in Fetch: ${error.message}`)
     }
   }
   
   return (
-    <div>
-      <div>
-        {body}
+    <div className="grid-x grid-margin-x">
+      <div className="cell small-2" >
+        <div>
+          Posted by {name}
+        </div>
+        <br />
+        <div>
+          Rating: {rating}/5
+        </div>
       </div>
-      <div>
-        Posted by {name}
+      <div className="cell small-8">
+        <p>{body}</p>
       </div>
-      <div>
-        Rating: {rating}/5
-      </div>
-      <div onClick={voteHandler}>
-        Upvotes: {votes.upvotes}        
-      </div>
-      <div onClick={voteHandler}>
-        Downvotes: {votes.downvotes}
+      <div className="cell small-2" >
+        <div onClick={voteHandler}>
+          Upvotes: {votes.upvotes}    
+        </div>
+        <div onClick={voteHandler}>
+          Downvotes: {votes.downvotes}
+        </div>
       </div>
     </div>
   )
