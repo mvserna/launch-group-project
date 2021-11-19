@@ -10,6 +10,7 @@ const CoffeeshopsShowContainer = (props) => {
     state: "",
     zip: "",
     description: "",
+    image: "",
     reviews: []
   })
 
@@ -47,14 +48,21 @@ const CoffeeshopsShowContainer = (props) => {
       <div className="show-title">
         <h3>{coffeeshop.name}</h3>
       </div>
-      <div className="show-address">
-        <div>{coffeeshop.address}</div>
-        <div>{`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}</div>
+      <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+          <img className="cell small-2" src={coffeeshop.image.url} alt={`${coffeeshop.name} image`} srcset=""/>
+          <div class="cell small-10">
+            <div className="show-address">
+              <div>{coffeeshop.address}</div>
+              <div>{`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}</div>
+            </div>
+            <div className="show-description">
+              {coffeeshop.description}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="show-description">
-        {coffeeshop.description}
-      </div>
-      <Link className="button" to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
+      <Link className="show add-review button" to={`/coffeeshops/${props.match.params.id}/reviews/new`}>
           Leave a Review!
       </Link>
       <div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-
 import { Redirect } from "react-router-dom"
 import _ from 'lodash'
+import Dropzone from "react-dropzone"
+
 import ErrorList from "./ErrorList"
 
 const CoffeeshopForm = (props) => {
@@ -14,7 +15,8 @@ const CoffeeshopForm = (props) => {
     city: "",
     state: "",
     zip: "",
-    description: ""
+    description: "",
+    image: ""
   })
 
   const handleChange = (event) => {
@@ -69,16 +71,14 @@ const CoffeeshopForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    let formDataBody = new FormData(document.getElementsByTagName("form")[0])
+    formDataBody.append("image", coffeeFormData.image)
     if (validateForm()){
       try{
         const response = await fetch("/api/v1/coffeeshops", {
           credentials: "same-origin",
           method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(coffeeFormData)
+          body: formDataBody
         })
         if (!response.ok) {
           throw(new Error(`${response.status}: ${response.statusText}`))
@@ -101,7 +101,15 @@ const CoffeeshopForm = (props) => {
       city: "",
       state: "",
       zip: "",
-      description: ""
+      description: "",
+      image: ""
+    })
+  }
+
+  const handleFileUpload = (acceptedFiles) => {
+    setCoffeeFormData({
+      ...coffeeFormData,
+      image: acceptedFiles[0]
     })
   }
 
@@ -114,67 +122,80 @@ const CoffeeshopForm = (props) => {
       <h1>Add a New Coffee Shop</h1>
       <form onSubmit={handleSubmit}>
         <fieldset className="fieldset">
-        <ErrorList errors={errors} />
-        <label>Name:
-          <input 
-            name="name"
-            id="name"
-            type="text"
-            value={coffeeFormData.name}
-            onChange={handleChange}
-          />
-        </label>
+          <ErrorList errors={errors} />
+          <label>Name:
+            <input 
+              name="name"
+              id="name"
+              type="text"
+              value={coffeeFormData.name}
+              onChange={handleChange}
+            />
+          </label>
 
-        <label>Address:
-          <input 
-            name="address" 
-            id="address" 
-            type="text" 
-            value={coffeeFormData.address} 
-            onChange={handleChange}
-          />
-        </label>
+          <label>Address:
+            <input 
+              name="address" 
+              id="address" 
+              type="text" 
+              value={coffeeFormData.address} 
+              onChange={handleChange}
+            />
+          </label>
 
-        <label>City:
-          <input 
-            name="city" 
-            id="city" 
-            type="text" 
-            value={coffeeFormData.city} 
-            onChange={handleChange}
-          />
-        </label>
+          <label>City:
+            <input 
+              name="city" 
+              id="city" 
+              type="text" 
+              value={coffeeFormData.city} 
+              onChange={handleChange}
+            />
+          </label>
 
-        <label>State:        
-          <input 
-            name="state"
-            id="state" 
-            type="text" 
-            value={coffeeFormData.state} 
-            onChange={handleChange}/>
-        </label>
+          <label>State:        
+            <input 
+              name="state"
+              id="state" 
+              type="text" 
+              value={coffeeFormData.state} 
+              onChange={handleChange}/>
+          </label>
 
-        <label>Zip:
-          <input 
-            name="zip" 
-            id="zip" 
-            type="text" 
-            value={coffeeFormData.zip}
-            onChange={handleChange}
-          />
-        </label>
+          <label>Zip:
+            <input 
+              name="zip" 
+              id="zip" 
+              type="text" 
+              value={coffeeFormData.zip}
+              onChange={handleChange}
+            />
+          </label>
 
-        <label>Description:
-          <input 
-            name="description" 
-            id="description" 
-            type="text" 
-            value={coffeeFormData.description}
-            onChange={handleChange}
-          />
-        </label>
+          <label>Description:
+            <input 
+              name="description" 
+              id="description" 
+              type="text" 
+              value={coffeeFormData.description}
+              onChange={handleChange}
+            />
+          </label>
+
+          <Dropzone onDrop={handleFileUpload}>
+            {({getRootProps, getInputProps}) => (
+              <section>
+                <div {...getRootProps()}>
+                  <label>Image:
+                    <input {...getInputProps()} />
+                    <p className="callout">Drag 'n' drop some files here, or click to select files</p>
+                  </label>
+                </div>
+              </section>
+            )}
+          </Dropzone>
         </fieldset>
-        <div class="button-group">
+        <div className="button-group">
           <input className ="button" name="submit" type="submit" value="Add Shop"/>
           <button className ="button" onClick={clearForm}>Clear</button>
         </div>
