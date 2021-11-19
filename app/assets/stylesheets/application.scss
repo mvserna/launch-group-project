@@ -20,11 +20,6 @@
   padding: 0 1rem;
 }
 
-// .form-container {
-  // max-width: 1000px;
-  
-// }
-
 .form-container {
   width: 1000px;
   margin: 0 auto;
@@ -94,14 +89,18 @@ body {
 }
 
 .show-description {
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 1rem 0rem;
 }
 
 .about-us-detail{
   color:#3f2301;
-  padding: 0 1rem 1rem 0rem;
 }
 
 .show.add-review.button {
   margin: 2rem 0 2rem 1rem;
+}
+
+
+.show.details.grid-container {
+  margin-left: 0;
 }

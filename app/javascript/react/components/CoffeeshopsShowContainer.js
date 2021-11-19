@@ -48,10 +48,10 @@ const CoffeeshopsShowContainer = (props) => {
       <div className="show-title">
         <h3>{coffeeshop.name}</h3>
       </div>
-      <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+      <div className="show details grid-container" >
+        <div className="grid-x grid-margin-x" id="details">
           <img className="cell small-2" src={coffeeshop.image.url} alt={`${coffeeshop.name} image`} srcset=""/>
-          <div class="cell small-10">
+          <div className="cell small-10">
             <div className="show-address">
               <div>{coffeeshop.address}</div>
               <div>{`${coffeeshop.city}, ${coffeeshop.state} ${coffeeshop.zip}`}</div>
