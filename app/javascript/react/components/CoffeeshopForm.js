@@ -68,26 +68,26 @@ const CoffeeshopForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (validateForm()){
-    try{
-      const response = await fetch("/api/v1/coffeeshops", {
-        credentials: "same-origin",
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(coffeeFormData)
-      })
-      if (!response.ok) {
-        throw(new Error(`${response.status}: ${response.statusText}`))
-      };
-      const parseShopData = await response.json()
-      setCoffeeFormData({...coffeeFormData, parseShopData})
-      setRedirect(true)
-      
-    } catch(err) {
-      console.error(err)
-    }
+      try{
+        const response = await fetch("/api/v1/coffeeshops", {
+          credentials: "same-origin",
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(coffeeFormData)
+        })
+        if (!response.ok) {
+          throw(new Error(`${response.status}: ${response.statusText}`))
+        };
+        const parseShopData = await response.json()
+        setCoffeeFormData({...coffeeFormData, parseShopData})
+        setRedirect(true)
+        
+      } catch(err) {
+        console.error(err)
+      }
     }
   }
 

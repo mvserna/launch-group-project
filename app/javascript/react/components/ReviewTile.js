@@ -13,6 +13,10 @@ const ReviewTile = (props) => {
   })
 
   const voteHandler = async (event) => {
+    if (document.getElementsByTagName("a")[2].textContent == "Sign In") {
+      return
+    }
+
     const current_vote = event.currentTarget.innerText.slice(0,1)
     let new_upvotes_total
     let new_downvotes_total
