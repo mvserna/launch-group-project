@@ -16,31 +16,68 @@
 
  */
 
-// .index.container {
-//    background-color: lightseagreen;
-//    padding: 5px;
-//  }
-// .index.title {
-//   background-color: lightblue;
-// }
-// .index.list {
-//   background-color: lightcoral;
-// }
-.index.tile {
-  background-color: #ecd7b8;
-  width: 80%;
-  margin-left: 20%;
-  margin-top: 0;
-  margin-bottom: 6rem;
-  border-top-style: solid;
-  border-top-width: 1px;
-  position: relative;
-  padding-top: 0.6rem;
-  font-size: 1.9rem;
-  line-height: 1.4;
-  font-weight: normal;
+.container {
+  padding: 0 1rem;
 }
 
-#bg-img {
-  opacity: 0.4;
+.tile {
+  width: 80%;
+  margin: 0 0 0 20%;
+  border-top: 2px solid #3f2301;
+  position: relative;
+  padding-top: 0.6rem;
+  padding-bottom: 4rem;
+}
+
+h5 {
+  width: 80%;
+  margin: 0 0 0 20%;
+  padding-bottom: 0rem;
+}
+
+p {
+  padding:0;
+  margin:0;
+}
+
+body {
+  background-color: #ecd7b8;
+  color: #3f2301;
+}
+
+.index.tile.link {
+  color: #3f2301;
+}
+
+.index.header {
+  padding: 5vw 0vw 5vw 5vw;
+  min-width: 100rem;
+}
+
+.coffee-navbar {
+  background-image: image-url("coffeebeans.png");
+  background-size: contain;
+}
+
+// .navbar-child {
+//   background-color: transparent;
+// }
+
+.arrow {
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: right;
+}
+
+.button {
+  background-color: #3f2301;
+  border: 1px solid black;
+}
+
+.show-address {
+  padding-bottom: 1rem;
+}
+
+.show-description {
+  padding: 0 1rem 1rem 1rem;
 }
