@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsStaffGroupProject</title>
+    <title>Cool Beans</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <%= stylesheet_link_tag 'application', media: 'all' %>
       <%= csrf_meta_tags %>
@@ -15,7 +15,7 @@
       <div class="top-bar coffee-navbar" data-sticky data-options="marginTop:0">
         <div class="top-bar-left">
           <ul class="menu">
-            <li class="menu-text button"><%= link_to 'Coffee Shop Index', root_path %></li>
+            <li class="menu-text button"><%= link_to 'Home', root_path %></li>
           </ul>
         </div>
         <div class="top-bar-right">
@@ -24,7 +24,7 @@
             <li class="button"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
           <% else %>
-          <ul class="menu">
+          <ul class="menu button-group">
             <li class="button"><%= link_to "Sign In", new_user_session_path %></li>
             <li class="button"><%= link_to "Sign Up", new_user_registration_path %></li>
           </ul>
