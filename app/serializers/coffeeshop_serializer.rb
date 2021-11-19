@@ -1,5 +1,5 @@
 class CoffeeshopSerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :city, :state, :zip, :description, :reviews
+  attributes :id, :name, :address, :city, :state, :zip, :description, :image, :reviews
 
   def reviews
     reviews = Review.where(coffeeshop_id: self.object.id)

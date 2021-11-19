@@ -43,6 +43,11 @@
   padding-bottom: 4rem;
 }
 
+.tile:hover {
+  opacity: 0.8;
+  box-shadow: 0 1px 6px rgba(32,33,36,.28);
+}
+
 h5 {
   width: 80%;
   margin: 0 0 0 20%;
@@ -93,5 +98,10 @@ body {
 }
 
 .about-us-detail{
-  color:#3f2301
+  color:#3f2301;
+  padding: 0 1rem 1rem 0rem;
+}
+
+.show.add-review.button {
+  margin: 2rem 0 2rem 1rem;
 }

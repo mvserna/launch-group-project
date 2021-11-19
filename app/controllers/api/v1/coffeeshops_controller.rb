@@ -8,17 +8,20 @@ class Api::V1::CoffeeshopsController < ApplicationController
   end
 
   def create
-    coffeeshop = Coffeeshop.new(coffeeshop_params)
+    coffeeshop = Coffeeshop.new({
+      name: params[:name],
+      address: params[:address],
+      city: params[:city],
+      state: params[:state],
+      zip: params[:zip],
+      description: params[:description],
+      image: params[:image]
+    })
 
     if coffeeshop.save
-        render json: coffeeshop
+      render json: coffeeshop
     else
-        render json: { error: coffeeshop.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: coffeeshop.errors.full_messages }, status: :unprocessable_entity
     end
-  end
-
-  private
-  def coffeeshop_params 
-    params.require(:coffeeshop).permit(:name, :address, :city, :state, :zip, :description)
   end
 end
