@@ -45,7 +45,7 @@ const CoffeeshopsPage = () => {
       <div className="index title">
         <h2 className="index header">
           Cool Beans
-          <h4 className="subheader">Find the best coffeeshops in town!</h4>
+          <p className="h4 subheader">Find the best coffeeshops in town!</p>
         </h2>
       </div>
       <div className="index list">
